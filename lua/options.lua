@@ -59,4 +59,7 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Sets the number of items in the popup menu to 10 (the popup menu is used for autocompletion).
+vim.opt.pumheight = 10
+
 -- vim: ts=2 sts=2 sw=2 et

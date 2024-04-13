@@ -99,6 +99,7 @@ return {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'buffer', max_item_count = 10 },
         },
       }
     end,
