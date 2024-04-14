@@ -62,4 +62,7 @@ vim.opt.scrolloff = 10
 -- Sets the number of items in the popup menu to 10 (the popup menu is used for autocompletion).
 vim.opt.pumheight = 10
 
+-- Number lines according to the position of the cursor
+vim.opt.relativenumber = true
+
 -- vim: ts=2 sts=2 sw=2 et
