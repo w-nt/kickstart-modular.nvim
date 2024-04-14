@@ -42,7 +42,7 @@ return {
       },
       formatters = {
         astyle = {
-          prepend_args = { '--style=allman', '--align-pointer=type', '--unpad-paren', '--align-reference=type' },
+          prepend_args = { '--style=allman', '--align-pointer=type', '--unpad-paren', '--align-reference=type', '--pad-header' },
         },
       },
     },
