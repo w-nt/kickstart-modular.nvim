@@ -29,10 +29,16 @@ return {
         -- Conform can also run multiple formatters sequentially
         python = { 'black' },
         c = { 'astyle' },
+
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
+      },
+      formatters = {
+        astyle = {
+          prepend_args = { '--style=allman', '--align-pointer=type' },
+        },
       },
     },
   },
