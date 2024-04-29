@@ -150,7 +150,7 @@ return {
 
         jsonls = {},
 
-        java_language_server = {},
+        -- java_language_server = {}, DOESNT INSTALL FOR SOME REASON
 
         lua_ls = {
           -- cmd = {...},
