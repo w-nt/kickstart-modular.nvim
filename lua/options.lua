@@ -65,4 +65,7 @@ vim.opt.pumheight = 10
 -- Number lines according to the position of the cursor
 vim.opt.relativenumber = true
 
+-- Number of spaces of a tab
+vim.opt.shiftwidth = 4
+
 -- vim: ts=2 sts=2 sw=2 et
