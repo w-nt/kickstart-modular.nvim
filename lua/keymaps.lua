@@ -50,4 +50,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Move 1 more lines up or down in normal and visual modes.
+vim.keymap.set('n', 'K', ':m .-2<CR>==', { desc = 'Move one more line up' })
+vim.keymap.set('n', 'J', ':m .+1<CR>==', { desc = 'Move one more line down' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move one more line down' })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move one more line down' })
 -- vim: ts=2 sts=2 sw=2 et
