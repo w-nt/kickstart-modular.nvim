@@ -4,7 +4,8 @@ vim.cmd 'autocmd BufNewFile,BufRead *.h setfiletype objc'
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
-    lazy = false,
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
     keys = {
       {
         '<leader>f',
