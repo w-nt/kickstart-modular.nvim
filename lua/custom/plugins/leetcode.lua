@@ -9,11 +9,12 @@ return {
     -- optional
     'nvim-treesitter/nvim-treesitter',
     'nvim-tree/nvim-web-devicons',
-    '',
   },
   opts = {
     -- configuration goes here
+    arg = 'lc',
     lang = 'python3',
-    image_suport = true,
+    logging = true,
+    image_support = true,
   },
 }
