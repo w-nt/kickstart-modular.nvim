@@ -5,8 +5,6 @@ return {
     'nvim-telescope/telescope.nvim',
     'nvim-lua/plenary.nvim', -- required by telescope
     'MunifTanjim/nui.nvim',
-    '3rd/image.nvim',
-    -- optional
     'nvim-treesitter/nvim-treesitter',
     'nvim-tree/nvim-web-devicons',
   },
@@ -15,6 +13,6 @@ return {
     arg = 'lc',
     lang = 'python3',
     logging = true,
-    image_support = true,
+    image_support = false,
   },
 }

@@ -48,5 +48,10 @@ vim.keymap.set('n', 'J', ':m .+1<CR>==', { desc = 'Move one more line down' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move one more line down' })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move one more line down' })
 -- vim: ts=2 sts=2 sw=2 et
---
+
+-- FineCmdLine plugin
 vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
+
+-- VimSlime plugin
+vim.keymap.set('n', '<leader>vs', '<Plug>SlimeSend', { desc = 'Send to Slime' })
+vim.keymap.set('v', '<leader>vs', '<Plug>SlimeRegionSend', { desc = 'Send Region to Slime' })
