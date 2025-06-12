@@ -55,5 +55,27 @@ require 'lazy-bootstrap'
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
 
+vim.opt.clipboard = 'unnamedplus'
+
+vim.g.clipboard = {
+  name = 'wl-clipboard-safe',
+  copy = {
+    ['+'] = function(lines, _)
+      vim.fn.system({ 'wl-copy', '--type', 'text/plain' }, table.concat(lines, '\n'))
+    end,
+    ['*'] = function(lines, _)
+      vim.fn.system({ 'wl-copy', '--type', 'text/plain' }, table.concat(lines, '\n'))
+    end,
+  },
+  paste = {
+    ['+'] = function()
+      return vim.fn.systemlist 'wl-paste --no-newline'
+    end,
+    ['*'] = function()
+      return vim.fn.systemlist 'wl-paste --no-newline'
+    end,
+  },
+  cache_enabled = 0,
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
