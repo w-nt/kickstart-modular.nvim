@@ -10,7 +10,7 @@ return {
     cmd = { 'ConformInfo' },
     keys = {
       {
-        '<leader>f',
+        '<leader>cf',
         function() require('conform').format { async = true } end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -37,12 +37,6 @@ return {
           timeout_ms = 500,
           lsp_format = lsp_format_opt,
         }
-end,        }
-        if enabled_filetypes[vim.bo[bufnr].filetype] then
-          return { timeout_ms = 500 }
-        else
-          return nil
-        end
       end,
       default_format_opts = {
         lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.

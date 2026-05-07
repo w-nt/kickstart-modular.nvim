@@ -21,11 +21,5 @@ return {
         },
       },
     }
-
-    -- Optional keymap to open the cmdline
-    vim.keymap.set('n', '<leader>fc', function()
-      require('fine-cmdline').open()
-    end, { desc = 'Open Fine Cmdline' })
   end,
 }
-

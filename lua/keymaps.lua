@@ -73,3 +73,7 @@ vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
 -- VimSlime plugin
 vim.keymap.set('n', '<leader>vs', '<Plug>SlimeSend', { desc = 'Send to Slime' })
 vim.keymap.set('v', '<leader>vs', '<Plug>SlimeRegionSend', { desc = 'Send Region to Slime' })
+
+-- signature
+vim.keymap.set('n', '<leader>f', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Help' })
+vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Help' })
