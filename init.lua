@@ -60,22 +60,52 @@ vim.opt.clipboard = 'unnamedplus'
 vim.g.clipboard = {
   name = 'wl-clipboard-safe',
   copy = {
-    ['+'] = function(lines, _)
-      vim.fn.system({ 'wl-copy', '--type', 'text/plain' }, table.concat(lines, '\n'))
-    end,
-    ['*'] = function(lines, _)
-      vim.fn.system({ 'wl-copy', '--type', 'text/plain' }, table.concat(lines, '\n'))
-    end,
+    ['+'] = function(lines, _) vim.fn.system({ 'wl-copy', '--type', 'text/plain' }, table.concat(lines, '\n')) end,
+    ['*'] = function(lines, _) vim.fn.system({ 'wl-copy', '--type', 'text/plain' }, table.concat(lines, '\n')) end,
   },
   paste = {
-    ['+'] = function()
-      return vim.fn.systemlist 'wl-paste --no-newline'
-    end,
-    ['*'] = function()
-      return vim.fn.systemlist 'wl-paste --no-newline'
-    end,
+    ['+'] = function() return vim.fn.systemlist 'wl-paste --no-newline' end,
+    ['*'] = function() return vim.fn.systemlist 'wl-paste --no-newline' end,
   },
   cache_enabled = 0,
 }
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+
+if vim.fn.has 'wsl' == 1 then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+    },
+    paste = {
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end
+
+vim.g.copilot_enabled = false
+-- 1. Disable the default Copilot Tab mapping so we can control it
+vim.g.copilot_no_tab_map = true
+
+vim.keymap.set('i', '<Tab>', function()
+  -- 1. If Copilot ghost text is visible, accept it
+  if vim.fn['copilot#GetDisplayedSuggestion']().text ~= '' then return vim.fn['copilot#Accept']() end
+
+  -- 2. If the blink completion menu is open, CONFIRM the selection
+  if require('blink.cmp').is_visible() then
+    -- 'accept' confirms the current highlighted item
+    require('blink.cmp').accept()
+    return ''
+  end
+
+  -- 3. Snippet jumping (keeps your Neogen/Snippet workflow smooth)
+  if require('blink.cmp').is_active() then
+    require('blink.cmp').snippet_forward()
+    return ''
+  end
+
+  -- 4. Otherwise, just insert a regular Tab
+  return vim.api.nvim_replace_termcodes('<Tab>', true, true, true)
+end, { expr = true, replace_keycodes = false, desc = 'Smart Tab: Accept over Scroll' })

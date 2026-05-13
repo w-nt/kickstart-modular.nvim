@@ -77,3 +77,13 @@ vim.keymap.set('v', '<leader>vs', '<Plug>SlimeRegionSend', { desc = 'Send Region
 -- signature
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Help' })
 vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Help' })
+
+vim.keymap.set('n', '<leader>cp', function()
+  if vim.g.copilot_enabled == 1 then
+    vim.cmd 'Copilot disable'
+    print 'Copilot Off'
+  else
+    vim.cmd 'Copilot enable'
+    print 'Copilot On'
+  end
+end, { desc = '[C]opilot [P]ower Toggle' })
