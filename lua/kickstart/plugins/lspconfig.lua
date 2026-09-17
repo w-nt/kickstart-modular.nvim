@@ -135,6 +135,21 @@ return {
 
         jsonls = {},
 
+        texlab = {
+          settings = {
+            texlab = {
+              -- Tell TexLab NOT to compile on save (let VimTeX handle compilation)
+              build = {
+                onSave = false,
+              },
+              -- Tell TexLab NOT to pass forward searches to a viewer (let VimTeX handle Zathura)
+              forwardSearch = {
+                executable = "",
+                args = {},
+              },
+            },
+          },
+        },
         -- java_language_server = {}, DOESNT INSTALL FOR SOME REASON
 
         stylua = {}, -- Used to format Lua code
